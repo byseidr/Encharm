@@ -22,23 +22,13 @@ export const bool = (
     prefix: RegExp = /(?:)/,
     suffix: RegExp = /(?:)/
 ): string | null => {
-    let result = null;
     content = line(content, prefix, suffix);
-    if (content) {
-        content = content.replace(patterns.falsy, "n").replace(/[^n]+/g, "y");
-        result = content.charAt(0);
-    }
-    return result;
+    return helpers.getStringBool(content);
 };
 
 export const boolValue = (key: string, content: string): string | null => {
-    let result = null;
     content = lineValue(key, content);
-    if (content) {
-        content = content.replace(patterns.falsy, "n").replace(/[^n]+/g, "y");
-        result = content.charAt(0);
-    }
-    return result;
+    return helpers.getStringBool(content);
 };
 
 export const days = (
