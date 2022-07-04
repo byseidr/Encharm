@@ -19,7 +19,7 @@ export const blockValue = (key: string): RegExp =>
     new RegExp(intro(key) + block, "i");
 
 export const intro = (key: string) =>
-    key ? `(?<=^|\n|\r\n)${dec(key)}${div}` : "";
+    key ? `(?<=^|[\r\n\s\t])${dec(key)}${div}` : "";
 
 export const line = "(.*)[ ]*";
 
