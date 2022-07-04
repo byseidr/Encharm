@@ -18,7 +18,8 @@ export const block = "([\\s\\S]*?)[ ]*$";
 export const blockValue = (key: string): RegExp =>
     new RegExp(intro(key) + block, "i");
 
-export const intro = (key: string) => (key ? `(?<=^|\s)${dec(key)}${div}` : "");
+export const intro = (key: string) =>
+    key ? `(?<=^|\\s)${dec(key)}${div}` : "";
 
 export const line = "(.*)[ ]*";
 
