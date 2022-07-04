@@ -13,39 +13,39 @@ export const arrDiv = /(?:\r?\n|\s*,\s*)/;
 
 export const falsy = new RegExp(`(?:${falsyChars.join("|")})+|false`, "g");
 
-export const block = (prefix: string = "[ ]*", suffix: string = "[ ]*") =>
-    `${prefix}([\\s\\S]*?)${suffix}$`;
+export const block = (prefix: RegExp = /[ ]*/, suffix: RegExp = /[ ]*/) =>
+    new RegExp(`${prefix.source}([\\s\\S]*?)${suffix.source}$`, "i");
 
 export const blockValue = (key: string): RegExp =>
     new RegExp(block(intro(key)), "i");
 
-export const intro = (key: string) =>
-    key ? `(?<=^|\\s)${dec(key)}${div}` : "";
+export const intro = (key: string): RegExp =>
+    new RegExp(key ? `(?<=^|\\s)${dec(key)}${div}` : "");
 
-export const line = (prefix: string = "[ ]*", suffix: string = "[ ]*") =>
-    `${prefix}(.*)${suffix}`;
+export const line = (prefix: RegExp = /[ ]*/, suffix: RegExp = /[ ]*/) =>
+    new RegExp(`${prefix.source}(.*)${suffix.source}`, "i");
 
 export const lineValue = (key: string): RegExp =>
     new RegExp(line(intro(key)), "i");
 
 export const para = (
-    prefix: string = "[ ]*",
-    suffix: string = "[ ]*(?:[\r\n]+|$)"
-) => `${prefix}([\\s\\S]*?)${suffix}`;
+    prefix: RegExp = /[ ]*/,
+    suffix: RegExp = /[ ]*(?:[\r\n]+|$)/
+) => new RegExp(`${prefix.source}([\\s\\S]*?)${suffix.source}`, "i");
 
 export const paraValue = (key: string): RegExp =>
-    new RegExp(para(intro(key), `[ ]*(?:[\r\n]+.*${div}|$)`), "i");
+    new RegExp(para(intro(key), new RegExp(`[ ]*(?:[\r\n]+.*${div}|$)`)), "i");
 
-export const sentence = (prefix: string = "[ ]*", suffix: string = "[ ]*") =>
-    `${prefix}([^,]*)${suffix}`;
+export const sentence = (prefix: RegExp = /[ ]*/, suffix: RegExp = /[ ]*/) =>
+    new RegExp(`${prefix.source}([^,]*)${suffix.source}`, "i");
 
 export const sentenceValue = (key: string): RegExp =>
     new RegExp(sentence(intro(key)), "i");
 
 export const truthy = new RegExp(`(?:${truthyChars.join("|")})+|true`, "g");
 
-export const word = (prefix: string = "[ ]*", suffix: string = "[ ]*") =>
-    `${prefix}([^\\s]*)${suffix}`;
+export const word = (prefix: RegExp = /[ ]*/, suffix: RegExp = /[ ]*/) =>
+    new RegExp(`${prefix.source}([^\\s]*)${suffix.source}`, "i");
 
 export const wordValue = (key: string): RegExp =>
     new RegExp(word(intro(key)), "i");
