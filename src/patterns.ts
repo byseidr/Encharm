@@ -18,8 +18,7 @@ export const block = "([\\s\\S]*?)[ ]*$";
 export const blockValue = (key: string): RegExp =>
     new RegExp(intro(key) + block, "i");
 
-export const intro = (key: string) =>
-    key ? `(?<=^|[\r\n\s\t])${dec(key)}${div}` : "";
+export const intro = (key: string) => (key ? `(?<=^|\s)${dec(key)}${div}` : "");
 
 export const line = "(.*)[ ]*";
 
@@ -38,7 +37,7 @@ export const sentenceValue = (key: string): RegExp =>
 
 export const truthy = new RegExp(`(?:${truthyChars.join("|")})+|true`, "g");
 
-export const word = "([^\\s\\t]*)[ ]*";
+export const word = "([^\\s]*)[ ]*";
 
 export const wordValue = (key: string): RegExp =>
     new RegExp(intro(key) + word, "i");
