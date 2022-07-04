@@ -31,6 +31,11 @@ export const para = "([\\s\\S]*?)[ ]*(?:[\r\n]+.*" + div + "|$)";
 export const paraValue = (key: string): RegExp =>
     new RegExp(intro(key) + para, "i");
 
+export const sentence = "([^,]*)[ ]*";
+
+export const sentenceValue = (key: string): RegExp =>
+    new RegExp(intro(key) + sentence, "i");
+
 export const truthy = new RegExp(`(?:${truthyChars.join("|")})+|true`, "g");
 
 export const word = "([^\\s\\t]*)[ ]*";

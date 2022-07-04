@@ -61,6 +61,12 @@ export const slugValue = (key: string, content: string): string => {
 export const paraValue = (key: string, content: string): string =>
     helpers.getMatch(content, patterns.paraValue(key));
 
+export const sentenceValue = (key: string, content: string): string => {
+    let result = helpers.getMatch(content, patterns.sentenceValue(key));
+    result = result?.trim?.() ?? result;
+    return result;
+};
+
 export const urlValue = (key: string, content: string): string => {
     let result: string = lineValue(key, content);
     result = /https?:\/\//.test(result) ? result : "";
