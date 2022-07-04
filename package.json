@@ -1,0 +1,22 @@
+{
+  "name": "encharm",
+  "version": "1.0.0",
+  "description": "A multi-purpose set of text parsers.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "text",
+    "parser"
+  ],
+  "author": "Seidr",
+  "license": "MIT",
+  "dependencies": {
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "typescript": "^4.7.4"
+  }
+}
