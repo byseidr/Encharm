@@ -19,16 +19,25 @@ export const arrValue = (key: string, content: string): string[] => {
 
 export const bool = (
     content: string,
+    string: boolean = false,
     prefix: RegExp = /(?:)/,
     suffix: RegExp = /(?:)/
-): string | null => {
+): string | boolean => {
     content = line(content, prefix, suffix);
-    return helpers.getStringBool(content);
+    return string
+        ? helpers.getTrueBool(content)
+        : helpers.getStringBool(content);
 };
 
-export const boolValue = (key: string, content: string): string | null => {
+export const boolValue = (
+    key: string,
+    content: string,
+    string: boolean = false
+): string | boolean => {
     content = lineValue(key, content);
-    return helpers.getStringBool(content);
+    return string
+        ? helpers.getTrueBool(content)
+        : helpers.getStringBool(content);
 };
 
 export const days = (
