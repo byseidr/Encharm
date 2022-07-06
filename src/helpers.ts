@@ -20,3 +20,12 @@ export const getStringBool = (content: string): string => {
     }
     return result;
 };
+
+export const getTrueBool = (content: string): boolean => {
+    let result = false;
+    if (content) {
+        content = getStringBool(content);
+        result = content === "y" ? true : result;
+    }
+    return result;
+};
