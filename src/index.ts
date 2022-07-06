@@ -25,8 +25,8 @@ export const bool = (
 ): string | boolean => {
     content = line(content, prefix, suffix);
     return string
-        ? helpers.getTrueBool(content)
-        : helpers.getStringBool(content);
+        ? helpers.getStringBool(content)
+        : helpers.getTrueBool(content);
 };
 
 export const boolValue = (
@@ -36,8 +36,8 @@ export const boolValue = (
 ): string | boolean => {
     content = lineValue(key, content);
     return string
-        ? helpers.getTrueBool(content)
-        : helpers.getStringBool(content);
+        ? helpers.getStringBool(content)
+        : helpers.getTrueBool(content);
 };
 
 export const days = (
