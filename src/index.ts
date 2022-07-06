@@ -151,6 +151,22 @@ export const sentenceValue = (key: string, content: string): string => {
     return result;
 };
 
+export const string = (
+    content: string,
+    prefix: RegExp = /(?:)/,
+    suffix: RegExp = /(?:)/
+): string => {
+    let result = helpers.getMatch(content, patterns.line(prefix, suffix));
+    result = result?.trim?.() ?? result;
+    return result;
+};
+
+export const stringValue = (key: string, content: string): string => {
+    let result = helpers.getMatch(content, patterns.lineValue(key));
+    result = result?.trim?.() ?? result;
+    return result;
+};
+
 export const url = (
     content: string,
     prefix: RegExp = /(?:)/,
