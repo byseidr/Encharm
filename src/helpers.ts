@@ -7,10 +7,7 @@ export const getMatch = (
 ) => {
     let result: any = defaultVal;
     let matches: RegExpMatchArray | null = content?.match(pattern);
-    if (matches?.[1]) {
-        result = /^\d+$/.test(matches[1]) ? +matches[1] : matches[1];
-    }
-    return result;
+    return matches?.[1] ?? result;
 };
 
 export const getStringBool = (content: string) => {

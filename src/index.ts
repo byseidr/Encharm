@@ -99,6 +99,7 @@ export const line = (
     suffix: RegExp = /(?:)/
 ): string => {
     let result = helpers.getMatch(content, patterns.line(prefix, suffix));
+    result = /^\d+$/.test(result) ? +result : result;
     result = result?.trim?.() ?? result;
     return result;
 };
