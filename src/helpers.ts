@@ -10,13 +10,13 @@ export const getMatch = (
     return matches?.[1] ?? result;
 };
 
-export const getStringBool = (content: string) => {
-    let result = null;
+export const getStringBool = (content: string): string => {
+    let result = "n";
     if (content) {
         content = content
             ?.replace?.(patterns.falsy, "n")
             ?.replace?.(/[^n]+/g, "y");
-        result = content?.charAt?.(0) ?? null;
+        result = content?.charAt?.(0) ?? result;
     }
     return result;
 };
