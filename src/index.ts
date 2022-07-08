@@ -121,7 +121,7 @@ export const intValue = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: string | number = lineValue(key, <string>content, suffix, core);
-    result = Math.ceil(Number(content));
+    result = Math.ceil(Number(result));
     return result && result === result ? result : null;
 };
 
