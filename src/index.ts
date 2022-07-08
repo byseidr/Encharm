@@ -110,7 +110,7 @@ export const int = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: string | number = line(<string>content, prefix, suffix, core);
-    result = Math.ceil(Number(content));
+    result = Math.ceil(Number(result));
     return result && result === result ? result : null;
 };
 
