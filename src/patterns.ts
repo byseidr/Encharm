@@ -16,7 +16,7 @@ export const falsy = new RegExp(`(?:${falsyChars.join("|")})+|false`, "g");
 export const block = (
     prefix: RegExp = /[ ]*/,
     suffix: RegExp = /[ ]*/,
-    core: RegExp = /([\\s\\S]*?)/
+    core: RegExp = /([\s\S]*?)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}$`, "i");
 
 export const blockValue = (
@@ -43,7 +43,7 @@ export const lineValue = (
 export const para = (
     prefix: RegExp = /[ ]*/,
     suffix: RegExp = /[ ]*(?:[\r\n]+|$)/,
-    core: RegExp = /([\\s\\S]*?)/
+    core: RegExp = /([\s\S]*?)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
 
 export const paraValue = (
@@ -69,7 +69,7 @@ export const truthy = new RegExp(`(?:${truthyChars.join("|")})+|true`, "g");
 export const word = (
     prefix: RegExp = /[ ]*/,
     suffix: RegExp = /[ ]*/,
-    core: RegExp = /([^\\s]*)/
+    core: RegExp = /([^\s]*)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
 
 export const wordValue = (
