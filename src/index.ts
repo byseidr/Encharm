@@ -5,8 +5,8 @@ import * as patterns from "./patterns";
 
 export const arr = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string[] => {
     let result: string = para(content, prefix, suffix);
     return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
@@ -20,8 +20,8 @@ export const arrValue = (key: string, content: string): string[] => {
 export const bool = (
     content: string,
     string: boolean = false,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string | boolean => {
     content = line(content, prefix, suffix);
     return string
@@ -42,8 +42,8 @@ export const boolValue = (
 
 export const days = (
     content: string | number,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix);
     return result && result === result ? result * 1440 : null;
@@ -59,8 +59,8 @@ export const daysValue = (
 
 export const block = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => helpers.getMatch(content, patterns.block(prefix, suffix));
 
 export const blockValue = (key: string, content: string): string =>
@@ -68,8 +68,8 @@ export const blockValue = (key: string, content: string): string =>
 
 export const hours = (
     content: string | number,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix);
     return result && result === result ? result * 60 : null;
@@ -85,8 +85,8 @@ export const hoursValue = (
 
 export const int = (
     content: string | number,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): number | null => {
     let result: string | number = line(<string>content, prefix, suffix);
     result = Math.ceil(Number(content));
@@ -104,8 +104,8 @@ export const intValue = (
 
 export const line = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result = helpers.getMatch(content, patterns.line(prefix, suffix));
     result = /^\d+$/.test(result) ? +result : result;
@@ -121,8 +121,8 @@ export const lineValue = (key: string, content: string): string => {
 
 export const slug = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result: string = line(content, prefix, suffix);
     if (result) result = slugify(result);
@@ -137,8 +137,8 @@ export const slugValue = (key: string, content: string): string => {
 
 export const para = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => helpers.getMatch(content, patterns.para(prefix, suffix));
 
 export const paraValue = (key: string, content: string): string =>
@@ -146,8 +146,8 @@ export const paraValue = (key: string, content: string): string =>
 
 export const sentence = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result = helpers.getMatch(content, patterns.sentence(prefix, suffix));
     result = result?.trim?.() ?? result;
@@ -162,8 +162,8 @@ export const sentenceValue = (key: string, content: string): string => {
 
 export const string = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result = helpers.getMatch(content, patterns.line(prefix, suffix));
     result = result?.trim?.() ?? result;
@@ -178,8 +178,8 @@ export const stringValue = (key: string, content: string): string => {
 
 export const url = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result: string = line(content, prefix, suffix);
     result = /https?:\/\//.test(result) ? result : "";
@@ -194,8 +194,8 @@ export const urlValue = (key: string, content: string): string => {
 
 export const weeks = (
     content: string | number,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix);
     return result && result === result ? result * 10080 : null;
@@ -211,8 +211,8 @@ export const weeksValue = (
 
 export const word = (
     content: string,
-    prefix: RegExp = /(?:)/,
-    suffix: RegExp = /(?:)/
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined
 ): string => {
     let result = helpers.getMatch(content, patterns.word(prefix, suffix));
     result = result?.trim?.() ?? result;
