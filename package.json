@@ -1,6 +1,6 @@
 {
   "name": "encharm",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "A multi-purpose set of text parsers.",
   "main": "dist/index.js",
   "scripts": {
