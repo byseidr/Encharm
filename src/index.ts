@@ -1,3 +1,4 @@
+import * as $$ from "richierich";
 import slugify from "slugify";
 
 import * as helpers from "./helpers";
@@ -109,7 +110,9 @@ export const int = (
     suffix: RegExp | undefined = undefined,
     core: RegExp | undefined = undefined
 ): number | null => {
-    let result: string | number = line(<string>content, prefix, suffix, core);
+    let result: string | number = $$.isNum(content)
+        ? content
+        : line(<string>content, prefix, suffix, core);
     result = Math.ceil(Number(result));
     return result && result === result ? result : null;
 };
