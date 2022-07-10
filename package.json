@@ -13,6 +13,7 @@
   "author": "Seidr",
   "license": "MIT",
   "dependencies": {
+    "richierich": "^6.2.0",
     "slugify": "^1.6.5"
   },
   "devDependencies": {
