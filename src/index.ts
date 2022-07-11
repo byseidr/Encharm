@@ -174,28 +174,6 @@ export const minutesValue = (
     return result && result === result ? result : null;
 };
 
-export const slug = (
-    content: string,
-    prefix: RegExp | undefined = undefined,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => {
-    let result: string = line(content, prefix, suffix, core);
-    if (result) result = slugify(result);
-    return result;
-};
-
-export const slugValue = (
-    key: string,
-    content: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => {
-    let result: string = lineValue(key, content, suffix, core);
-    if (result) result = slugify(result);
-    return result;
-};
-
 export const para = (
     content: string,
     prefix: RegExp | undefined = undefined,
@@ -235,6 +213,28 @@ export const sentenceValue = (
         patterns.sentenceValue(key, suffix, core)
     );
     result = result?.trim?.() ?? result;
+    return result;
+};
+
+export const slug = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => {
+    let result: string = line(content, prefix, suffix, core);
+    if (result) result = slugify(result);
+    return result;
+};
+
+export const slugValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => {
+    let result: string = lineValue(key, content, suffix, core);
+    if (result) result = slugify(result);
     return result;
 };
 
