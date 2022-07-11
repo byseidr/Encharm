@@ -42,7 +42,7 @@ export const lineValue = (
 
 export const para = (
     prefix: RegExp = /[ ]*/,
-    suffix: RegExp = /[ ]*(?:[\r\n]+|$)/,
+    suffix: RegExp = /[ ]*(?:[\r\n][ \t]*[\r\n]+|$)/,
     core: RegExp = /([\s\S]*?)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
 
