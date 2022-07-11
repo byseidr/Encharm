@@ -154,6 +154,26 @@ export const lineValue = (
     return result;
 };
 
+export const minutes = (
+    content: string | number,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = int(content, prefix, suffix, core);
+    return result && result === result ? result : null;
+};
+
+export const minutesValue = (
+    key: string,
+    content: string | number,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = intValue(key, content, suffix, core);
+    return result && result === result ? result : null;
+};
+
 export const slug = (
     content: string,
     prefix: RegExp | undefined = undefined,
