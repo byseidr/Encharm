@@ -237,31 +237,6 @@ export const slugValue = (
     return result;
 };
 
-export const string = (
-    content: string,
-    prefix: RegExp | undefined = undefined,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => {
-    let result = helpers.getMatch(content, patterns.line(prefix, suffix, core));
-    result = result?.trim?.() ?? result;
-    return result;
-};
-
-export const stringValue = (
-    key: string,
-    content: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => {
-    let result = helpers.getMatch(
-        content,
-        patterns.lineValue(key, suffix, core)
-    );
-    result = result?.trim?.() ?? result;
-    return result;
-};
-
 export const url = (
     content: string,
     prefix: RegExp | undefined = undefined,
