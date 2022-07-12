@@ -135,7 +135,6 @@ export const line = (
     core: RegExp | undefined = undefined
 ): string => {
     let result = helpers.getMatch(content, patterns.line(prefix, suffix, core));
-    result = /^\d+$/.test(result) ? +result : result;
     result = result?.trim?.() ?? result;
     return result;
 };
