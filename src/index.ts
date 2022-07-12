@@ -70,20 +70,6 @@ export const daysValue = (
     return result && result === result ? result * 1440 : null;
 };
 
-export const block = (
-    content: string,
-    prefix: RegExp | undefined = undefined,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => helpers.getMatch(content, patterns.block(prefix, suffix, core));
-
-export const blockValue = (
-    key: string,
-    content: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string => helpers.getMatch(content, patterns.blockValue(key, suffix, core));
-
 export const hours = (
     content: string | number,
     prefix: RegExp | undefined = undefined,
@@ -236,6 +222,20 @@ export const slugValue = (
     if (result) result = slugify(result);
     return result;
 };
+
+export const string = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => helpers.getMatch(content, patterns.string(prefix, suffix, core));
+
+export const stringValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => helpers.getMatch(content, patterns.stringValue(key, suffix, core));
 
 export const url = (
     content: string,

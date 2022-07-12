@@ -13,18 +13,6 @@ export const arrDiv = /(?:\r?\n|\s*,\s*)/;
 
 export const falsy = new RegExp(`(?:${falsyChars.join("|")})+|false`, "g");
 
-export const block = (
-    prefix: RegExp = /[ ]*/,
-    suffix: RegExp = /[ ]*/,
-    core: RegExp = /([\s\S]*?)/
-) => new RegExp(`${prefix.source}${core.source}${suffix.source}$`, "i");
-
-export const blockValue = (
-    key: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): RegExp => new RegExp(block(intro(key), suffix, core), "i");
-
 export const intro = (key: string): RegExp =>
     new RegExp(key ? `(?<=^|\\s)${dec(key)}${div}` : "");
 
@@ -63,6 +51,18 @@ export const sentenceValue = (
     suffix: RegExp | undefined = undefined,
     core: RegExp | undefined = undefined
 ): RegExp => new RegExp(sentence(intro(key), suffix, core), "i");
+
+export const string = (
+    prefix: RegExp = /[ ]*/,
+    suffix: RegExp = /[ ]*/,
+    core: RegExp = /([\s\S]*?)/
+) => new RegExp(`${prefix.source}${core.source}${suffix.source}$`, "i");
+
+export const stringValue = (
+    key: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): RegExp => new RegExp(string(intro(key), suffix, core), "i");
 
 export const truthy = new RegExp(`(?:${truthyChars.join("|")})+|true`, "g");
 
