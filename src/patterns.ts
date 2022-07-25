@@ -24,8 +24,8 @@ export const line = (
 
 export const lineValue = (
     key: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
+    suffix: RegExp = new RegExp(`[ ]*(?: \\S+${div}|$)`),
+    core: RegExp = /(.*?)/
 ): RegExp => new RegExp(line(intro(key), suffix, core), "i");
 
 export const para = (
