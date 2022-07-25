@@ -36,7 +36,7 @@ export const para = (
 
 export const paraValue = (
     key: string,
-    suffix: RegExp = new RegExp(`[ ]*(?:[\r\n]+.*${div}|$)`),
+    suffix: RegExp = new RegExp(`[ ]*(?:[\r\n]+.+${div}|$)`),
     core: RegExp | undefined = undefined
 ): RegExp => new RegExp(para(intro(key), suffix, core), "i");
 
