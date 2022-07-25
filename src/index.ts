@@ -4,26 +4,6 @@ import slugify from "slugify";
 import * as helpers from "./helpers";
 import * as patterns from "./patterns";
 
-export const arr = (
-    content: string,
-    prefix: RegExp | undefined = undefined,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string[] => {
-    let result: string = para(content, prefix, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
-};
-
-export const arrValue = (
-    key: string,
-    content: string,
-    suffix: RegExp | undefined = undefined,
-    core: RegExp | undefined = undefined
-): string[] => {
-    let result: string = paraValue(key, content, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
-};
-
 export const bool = (
     content: string,
     string: boolean = false,
@@ -125,6 +105,26 @@ export const line = (
     return result;
 };
 
+export const lineArr = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = line(content, prefix, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const lineArrValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = lineValue(key, content, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
 export const lineValue = (
     key: string,
     content: string,
@@ -166,6 +166,26 @@ export const para = (
     core: RegExp | undefined = undefined
 ): string => helpers.getMatch(content, patterns.para(prefix, suffix, core));
 
+export const paraArr = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = para(content, prefix, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const paraArrValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = paraValue(key, content, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
 export const paraValue = (
     key: string,
     content: string,
@@ -185,6 +205,26 @@ export const sentence = (
     );
     result = result?.trim?.() ?? result;
     return result;
+};
+
+export const sentenceArr = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = sentence(content, prefix, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const sentenceArrValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = sentenceValue(key, content, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const sentenceValue = (
@@ -288,6 +328,26 @@ export const word = (
     let result = helpers.getMatch(content, patterns.word(prefix, suffix, core));
     result = result?.trim?.() ?? result;
     return result;
+};
+
+export const wordArr = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = word(content, prefix, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const wordArrValue = (
+    key: string,
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string[] => {
+    let result: string = wordValue(key, content, suffix, core);
+    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const wordValue = (
