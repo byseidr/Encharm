@@ -26,7 +26,7 @@ export const lineValue = (
     key: string,
     suffix: RegExp = new RegExp(`[ ]*(?: \\S+${div}|$)`),
     core: RegExp = /(.*?)/
-): RegExp => new RegExp(line(intro(key), suffix, core), "i");
+): RegExp => new RegExp(line(intro(key), suffix, core), "im");
 
 export const para = (
     prefix: RegExp = /[ ]*/,
