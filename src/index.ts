@@ -284,7 +284,7 @@ export const url = (
     core: RegExp | undefined = undefined
 ): string => {
     let result: string = line(content, prefix, suffix, core);
-    result = /https?:\/\//.test(result) ? result : "";
+    result = $$.isUrl(result) ? result : "";
     return result;
 };
 
@@ -295,7 +295,7 @@ export const urlValue = (
     core: RegExp | undefined = undefined
 ): string => {
     let result: string = lineValue(key, content, suffix, core);
-    result = /https?:\/\//.test(result) ? result : "";
+    result = $$.isUrl(result) ? result : "";
     return result;
 };
 
