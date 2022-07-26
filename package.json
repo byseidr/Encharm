@@ -15,7 +15,7 @@
     "author": "Seidr",
     "license": "MIT",
     "dependencies": {
-        "richierich": "^6.2.0",
+        "richierich": "^7.0.1",
         "slugify": "^1.6.5"
     },
     "devDependencies": {
