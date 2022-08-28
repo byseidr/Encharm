@@ -135,6 +135,21 @@ export const lineKey = (
     return result;
 };
 
+export const lineObj = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): { [key: string]: string } => {
+    let result: { [key: string]: string } = {};
+    let arr: string[] = lineArr(content, prefix, suffix, core);
+    arr.forEach((el) => {
+        const key = lineKey(el);
+        if (key) result[key] = lineValue(key, el);
+    });
+    return result;
+};
+
 export const lineValue = (
     key: string,
     content: string,
@@ -202,6 +217,21 @@ export const paraKey = (
     core: RegExp | undefined = undefined
 ): string => helpers.getMatch(content, patterns.paraKey(suffix, core));
 
+export const paraObj = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): { [key: string]: string } => {
+    let result: { [key: string]: string } = {};
+    let arr: string[] = paraArr(content, prefix, suffix, core);
+    arr.forEach((el) => {
+        const key = paraKey(el);
+        if (key) result[key] = paraValue(key, el);
+    });
+    return result;
+};
+
 export const paraValue = (
     key: string,
     content: string,
@@ -250,6 +280,21 @@ export const sentenceKey = (
 ): string => {
     let result = helpers.getMatch(content, patterns.sentenceKey(suffix, core));
     result = result?.trim?.() ?? result;
+    return result;
+};
+
+export const sentenceObj = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): { [key: string]: string } => {
+    let result: { [key: string]: string } = {};
+    let arr: string[] = sentenceArr(content, prefix, suffix, core);
+    arr.forEach((el) => {
+        const key = sentenceKey(el);
+        if (key) result[key] = sentenceValue(key, el);
+    });
     return result;
 };
 
@@ -383,6 +428,21 @@ export const wordKey = (
 ): string => {
     let result = helpers.getMatch(content, patterns.wordKey(suffix, core));
     result = result?.trim?.() ?? result;
+    return result;
+};
+
+export const wordObj = (
+    content: string,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): { [key: string]: string } => {
+    let result: { [key: string]: string } = {};
+    let arr: string[] = wordArr(content, prefix, suffix, core);
+    arr.forEach((el) => {
+        const key = wordKey(el);
+        if (key) result[key] = wordValue(key, el);
+    });
     return result;
 };
 
