@@ -26,6 +26,11 @@ export const line = (
     core: RegExp = /(.*)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
 
+export const lineKey = (
+    suffix: RegExp = new RegExp(`[ ]*(?: \\S+${div}|$)`),
+    core: RegExp = /.*?/
+): RegExp => new RegExp(line(intro("(.+)"), suffix, core), "im");
+
 export const lineValue = (
     key: string,
     suffix: RegExp = new RegExp(`[ ]*(?: \\S+${div}|$)`),
@@ -38,6 +43,11 @@ export const para = (
     core: RegExp = /([\s\S]*?)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
 
+export const paraKey = (
+    suffix: RegExp = new RegExp(`[ ]*(?:[\r\n]+.+${div}|$)`),
+    core: RegExp | undefined = /[\s\S]*?/
+): RegExp => new RegExp(para(intro("(.+)"), suffix, core), "i");
+
 export const paraValue = (
     key: string,
     suffix: RegExp = new RegExp(`[ ]*(?:[\r\n]+.+${div}|$)`),
@@ -49,6 +59,11 @@ export const sentence = (
     suffix: RegExp = /[ ]*/,
     core: RegExp = /([^,]*)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
+
+export const sentenceKey = (
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = /[^,]*/
+): RegExp => new RegExp(sentence(intro("(.+)"), suffix, core), "i");
 
 export const sentenceValue = (
     key: string,
@@ -75,6 +90,11 @@ export const word = (
     suffix: RegExp = /[ ]*/,
     core: RegExp = /([^\s]*)/
 ) => new RegExp(`${prefix.source}${core.source}${suffix.source}`, "i");
+
+export const wordKey = (
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = /[^\s]*/
+): RegExp => new RegExp(word(intro("(.+)"), suffix, core), "i");
 
 export const wordValue = (
     key: string,
