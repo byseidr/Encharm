@@ -125,6 +125,16 @@ export const lineArrValue = (
     return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
 };
 
+export const lineKey = (
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => {
+    let result = helpers.getMatch(content, patterns.lineKey(suffix, core));
+    result = result?.trim?.() ?? result;
+    return result;
+};
+
 export const lineValue = (
     key: string,
     content: string,
@@ -186,6 +196,12 @@ export const paraArrValue = (
     return result?.split?.(patterns.paraArrDiv)?.filter?.(Boolean) ?? [];
 };
 
+export const paraKey = (
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => helpers.getMatch(content, patterns.paraKey(suffix, core));
+
 export const paraValue = (
     key: string,
     content: string,
@@ -225,6 +241,16 @@ export const sentenceArrValue = (
 ): string[] => {
     let result: string = sentenceValue(key, content, suffix, core);
     return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const sentenceKey = (
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => {
+    let result = helpers.getMatch(content, patterns.sentenceKey(suffix, core));
+    result = result?.trim?.() ?? result;
+    return result;
 };
 
 export const sentenceValue = (
@@ -348,6 +374,16 @@ export const wordArrValue = (
 ): string[] => {
     let result: string = wordValue(key, content, suffix, core);
     return result?.split?.(patterns.wordArrDiv)?.filter?.(Boolean) ?? [];
+};
+
+export const wordKey = (
+    content: string,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): string => {
+    let result = helpers.getMatch(content, patterns.wordKey(suffix, core));
+    result = result?.trim?.() ?? result;
+    return result;
 };
 
 export const wordValue = (
