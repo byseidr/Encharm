@@ -337,7 +337,7 @@ export const wordArr = (
     core: RegExp | undefined = undefined
 ): string[] => {
     let result: string = word(content, prefix, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+    return result?.split?.(patterns.wordArrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const wordArrValue = (
@@ -347,7 +347,7 @@ export const wordArrValue = (
     core: RegExp | undefined = undefined
 ): string[] => {
     let result: string = wordValue(key, content, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+    return result?.split?.(patterns.wordArrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const wordValue = (
