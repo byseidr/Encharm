@@ -173,7 +173,7 @@ export const paraArr = (
     core: RegExp | undefined = undefined
 ): string[] => {
     let result: string = para(content, prefix, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+    return result?.split?.(patterns.paraArrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const paraArrValue = (
@@ -183,7 +183,7 @@ export const paraArrValue = (
     core: RegExp | undefined = undefined
 ): string[] => {
     let result: string = paraValue(key, content, suffix, core);
-    return result?.split?.(patterns.arrDiv)?.filter?.(Boolean) ?? [];
+    return result?.split?.(patterns.paraArrDiv)?.filter?.(Boolean) ?? [];
 };
 
 export const paraValue = (
