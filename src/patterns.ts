@@ -11,6 +11,10 @@ export const div = `(?:${dec(":+")})+`;
 
 export const arrDiv = /(?:\r?\n|\s*,\s*)/;
 
+export const paraArrDiv = /(?:\r?\n)/;
+
+export const wordArrDiv = /(?: +)/;
+
 export const falsy = new RegExp(`(?:${falsyChars.join("|")})+|false`, "g");
 
 export const intro = (key: string): RegExp =>
