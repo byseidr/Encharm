@@ -5,7 +5,7 @@ const falsyChars = ["👎", "❎", "❌", "✖", "0"];
 
 const truthyChars = ["👍", "✅", "☑", "✔", "1"];
 
-const decChars = ["a-z", "0-9", ...falsyChars, ...truthyChars];
+const decChars = ["\\p{Ll}", "\\p{N}", ...falsyChars, ...truthyChars];
 
 export const div = `(?:${dec(":+")})+`;
 
