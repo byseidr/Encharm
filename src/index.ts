@@ -225,9 +225,14 @@ export const paraObj = (
 ): { [key: string]: string } => {
     let result: { [key: string]: string } = {};
     let arr: string[] = paraArr(content, prefix, suffix, core);
+    let lastKey: string | null = null;
     arr.forEach((el) => {
         const key = paraKey(el);
-        if (key) result[key] = paraValue(key, el);
+        const value = paraValue(key, el);
+        if (key) {
+            result[key] = value;
+            lastKey = key;
+        } else if (lastKey) result[lastKey] += `\n${value}`;
     });
     return result;
 };
