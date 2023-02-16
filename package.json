@@ -1,6 +1,6 @@
 {
     "name": "encharm",
-    "version": "8.1.1",
+    "version": "9.0.0",
     "description": "A multi-purpose set of text parsers.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
