@@ -4,6 +4,14 @@ import slugify from "slugify";
 import * as helpers from "./helpers";
 import * as patterns from "./patterns";
 
+const daysInAWeek = 7;
+const hoursInADay = 24;
+const minutesInAnHour = 60;
+const secondsInAMinute = 60;
+const secondsInAnHour = minutesInAnHour * secondsInAMinute;
+const secondsInADay = hoursInADay * secondsInAnHour;
+const secondsInAWeek = daysInAWeek * secondsInADay;
+
 export const bool = (
     content: string,
     string: boolean = false,
@@ -37,7 +45,7 @@ export const days = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix, core);
-    return result && result === result ? result * 1440 : null;
+    return result && result === result ? result * secondsInADay : null;
 };
 
 export const daysValue = (
@@ -47,7 +55,7 @@ export const daysValue = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = intValue(key, content, suffix, core);
-    return result && result === result ? result * 1440 : null;
+    return result && result === result ? result * secondsInADay : null;
 };
 
 export const hours = (
@@ -57,7 +65,7 @@ export const hours = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix, core);
-    return result && result === result ? result * 60 : null;
+    return result && result === result ? result * secondsInAnHour : null;
 };
 
 export const hoursValue = (
@@ -67,7 +75,7 @@ export const hoursValue = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = intValue(key, content, suffix, core);
-    return result && result === result ? result * 60 : null;
+    return result && result === result ? result * secondsInAnHour : null;
 };
 
 export const int = (
@@ -171,7 +179,7 @@ export const minutes = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix, core);
-    return result && result === result ? result : null;
+    return result && result === result ? result * secondsInAMinute : null;
 };
 
 export const minutesValue = (
@@ -181,7 +189,7 @@ export const minutesValue = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = intValue(key, content, suffix, core);
-    return result && result === result ? result : null;
+    return result && result === result ? result * secondsInAMinute : null;
 };
 
 export const para = (
@@ -243,6 +251,26 @@ export const paraValue = (
     suffix: RegExp | undefined = undefined,
     core: RegExp | undefined = undefined
 ): string => helpers.getMatch(content, patterns.paraValue(key, suffix, core));
+
+export const seconds = (
+    content: string | number,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = int(content, prefix, suffix, core);
+    return result && result === result ? result : null;
+};
+
+export const secondsValue = (
+    key: string,
+    content: string | number,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = intValue(key, content, suffix, core);
+    return result && result === result ? result : null;
+};
 
 export const sentence = (
     content: string,
@@ -382,7 +410,7 @@ export const weeks = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = int(content, prefix, suffix, core);
-    return result && result === result ? result * 10080 : null;
+    return result && result === result ? result * secondsInAWeek : null;
 };
 
 export const weeksValue = (
@@ -392,7 +420,7 @@ export const weeksValue = (
     core: RegExp | undefined = undefined
 ): number | null => {
     let result: number | null = intValue(key, content, suffix, core);
-    return result && result === result ? result * 10080 : null;
+    return result && result === result ? result * secondsInAWeek : null;
 };
 
 export const word = (
