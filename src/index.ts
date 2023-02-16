@@ -8,9 +8,11 @@ const daysInAWeek = 7;
 const hoursInADay = 24;
 const minutesInAnHour = 60;
 const secondsInAMinute = 60;
+const weeksInAMonth = 4;
 const secondsInAnHour = minutesInAnHour * secondsInAMinute;
 const secondsInADay = hoursInADay * secondsInAnHour;
 const secondsInAWeek = daysInAWeek * secondsInADay;
+const secondsInAMonth = weeksInAMonth * secondsInAWeek;
 
 export const bool = (
     content: string,
@@ -190,6 +192,26 @@ export const minutesValue = (
 ): number | null => {
     let result: number | null = intValue(key, content, suffix, core);
     return result && result === result ? result * secondsInAMinute : null;
+};
+
+export const months = (
+    content: string | number,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = int(content, prefix, suffix, core);
+    return result && result === result ? result * secondsInAMonth : null;
+};
+
+export const monthsValue = (
+    key: string,
+    content: string | number,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: number | null = intValue(key, content, suffix, core);
+    return result && result === result ? result * secondsInAMonth : null;
 };
 
 export const para = (
