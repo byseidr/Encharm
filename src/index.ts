@@ -214,6 +214,30 @@ export const monthsValue = (
     return result && result === result ? result * secondsInAMonth : null;
 };
 
+export const number = (
+    content: string | number,
+    prefix: RegExp | undefined = undefined,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: string | number = $$.isNum(content)
+        ? content
+        : line(<string>content, prefix, suffix, core);
+    result = Number(result);
+    return result && result === result ? result : null;
+};
+
+export const numberValue = (
+    key: string,
+    content: string | number,
+    suffix: RegExp | undefined = undefined,
+    core: RegExp | undefined = undefined
+): number | null => {
+    let result: string | number = lineValue(key, <string>content, suffix, core);
+    result = Number(result);
+    return result && result === result ? result : null;
+};
+
 export const para = (
     content: string,
     prefix: RegExp | undefined = undefined,
